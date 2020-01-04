@@ -104,7 +104,7 @@ class Scss extends Plugin
 			UrlManager::class,
 			UrlManager::EVENT_REGISTER_SITE_URL_RULES,
 			function (RegisterUrlRulesEvent $event) {
-				$event->rules['siteActionTrigger1'] = 'scss-controller/styles';
+				$event->rules['scss'] = 'scss/styles/index';
 			}
 		);
 

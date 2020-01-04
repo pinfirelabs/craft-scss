@@ -61,6 +61,12 @@ class Settings extends Model
 	 */
 	public $twig = '';
 
+	/**
+	 * Number of seconds to cache scss results
+	 * @var int
+	 */
+	public $cacheTime = 24 * 60 * 60;
+
     // Public Methods
     // =========================================================================
 

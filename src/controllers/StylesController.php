@@ -6,10 +6,11 @@
  * @copyright Copyright (c) 2020 Pinfire Labs
  */
 
-namespace chasegiunta\scss\models;
+namespace chasegiunta\scss\controllers;
 
 use Craft;
 use craft\web\Controller;
+use chasegiunta\scss\Scss;
 
 /**
  * Provides a way to build styles dynamically, but still serve them statically.
@@ -35,7 +36,21 @@ class StylesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$twigTemplate;
-		echo Craft::$app->view->renderString($twigTemplate);
+		$plugin = Scss::$plugin;
+		$settings = $plugin->getSettings();
+		$twigTemplate = $settings['twig'];
+
+		$scss = Craft::$app->view->renderString($twigTemplate);
+
+		$cacheKey = md5($scss);
+		$css = Craft::$app->cache->get($cacheKey);
+		if ($css === false) {
+			$css = $plugin->scssService->compileScss($scss);
+
+			Craft::$app->cache->set($cacheKey, $css, $settings['cacheTime']);
+		}
+
+		header('Content-type: text/css');
+		echo $css;
 	}
 }
