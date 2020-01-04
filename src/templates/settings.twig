@@ -10,9 +10,9 @@
 
 {% import "_includes/forms" as forms %}
 
-{{ forms.textArea({
-    label: 'TWIG template to use to generate CSS',
-    id: 'twig',
-    name: 'twig',
-    value: settings['twig']})
-}}
+{{ forms.textAreaField({
+	label: 'TWIG template to use to generate CSS',
+	id: 'twig',
+	name: 'twig',
+	value: settings['twig']
+}) }}

@@ -63,7 +63,9 @@ class Scss extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+	public $schemaVersion = '1.0.0';
+
+	public $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
@@ -142,5 +144,13 @@ class Scss extends Plugin
     protected function createSettingsModel()
     {
         return new Settings();
-    }
+	}
+
+	protected function settingsHtml()
+	{
+		return \Craft::$app->getView()->renderTemplate('scss/settings', [
+			'settings' => $this->getSettings()
+		]);
+	}
+
 }

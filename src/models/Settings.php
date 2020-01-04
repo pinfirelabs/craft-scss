@@ -84,6 +84,7 @@ class Settings extends Model
             ['debug', 'boolean'],
 			['debug', 'default', 'value' => false],
 			['twig', 'string'],
+			['twig', 'default', 'value' => 'Test'],
         ];
     }
 }
