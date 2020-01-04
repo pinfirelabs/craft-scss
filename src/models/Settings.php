@@ -53,7 +53,13 @@ class Settings extends Model
      * @var boolean
      */
 
-    public $debug = false;
+	public $debug = false;
+
+	/**
+	 * Template text to render
+	 * @var string
+	 */
+	public $twig = '';
 
     // Public Methods
     // =========================================================================
@@ -76,7 +82,8 @@ class Settings extends Model
             ['devModeOutputFormat', 'string'],
             ['devModeOutputFormat', 'default', 'value' => 'Expanded'],
             ['debug', 'boolean'],
-            ['debug', 'default', 'value' => false],
+			['debug', 'default', 'value' => false],
+			['twig', 'string'],
         ];
     }
 }

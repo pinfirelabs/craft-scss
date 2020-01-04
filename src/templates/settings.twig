@@ -1,0 +1,18 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Scss plugin for Craft CMS 3.x
+ *
+ * @link      https://www.pinfirelabs.com
+ * @copyright Copyright (c) 2020 Pinfire Labs
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textArea({
+    label: 'TWIG template to use to generate CSS',
+    id: 'twig',
+    name: 'twig',
+    value: settings['twig']})
+}}

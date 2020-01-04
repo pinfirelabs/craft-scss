@@ -19,6 +19,8 @@ use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
+use craft\events\RegisterUrlRulesEvent;
+use craft\web\UrlManager;
 
 use yii\base\Event;
 
@@ -95,6 +97,14 @@ class Scss extends Plugin
                 }
             }
         );
+		
+		Event::on(
+			UrlManager::class,
+			UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+			function (RegisterUrlRulesEvent $event) {
+				$event->rules['siteActionTrigger1'] = 'scss-controller/styles';
+			}
+		);
 
 /**
  * Logging in Craft involves using one of the following methods:

@@ -33,7 +33,7 @@
     "extra": {
         "name": "SCSS",
         "handle": "scss",
-        "hasCpSettings": false,
+        "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/chasegiunta/scss/master/CHANGELOG.md",
         "components": {

@@ -38,7 +38,13 @@ class ScssService extends Component
     // =========================================================================
 
     public function scss($scss = "", $attributes = "")
-    {
+	{
+		$result = $this->compileScss($scss, $attributes);
+		Craft::$app->view->registerCss($result);
+	}
+
+	public function compileScss($scss = '', $attributes = '')
+	{
         $attributes = unserialize($attributes);
         $scssphp = new Compiler();
 
@@ -75,8 +81,6 @@ class ScssService extends Component
 
         $compiled = $scssphp->compile($scss);
 
-        $result = $compiled;
-
-        Craft::$app->view->registerCss($result);
+        return $compiled;
     }
 }
