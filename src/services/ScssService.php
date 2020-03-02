@@ -48,10 +48,11 @@ class ScssService extends Component
         $attributes = unserialize($attributes);
         $scssphp = new Compiler();
 
+        $settings = Scss::$plugin->getSettings();
         if (Craft::$app->getConfig()->general->devMode) {
-            $outputFormat = Scss::$plugin->getSettings()->devModeOutputFormat;
+            $outputFormat = $settings->devModeOutputFormat;
         } else {
-            $outputFormat = Scss::$plugin->getSettings()->outputFormat;
+            $outputFormat = $settings->outputFormat;
         }
 
         if ($attributes['expanded']) {
@@ -75,8 +76,12 @@ class ScssService extends Component
         $rootPath = Craft::getAlias('@root');
         $scssphp->setImportPaths($rootPath);
 
-        if ($attributes['debug'] || Scss::$plugin->getSettings()->debug) {
+        if ($settings->debug) {
             $scssphp->setLineNumberStyle(Compiler::LINE_COMMENTS);
+        }
+
+        if ($settings->generateSourceMap) {
+            $scssphp->setSourceMap(Compiler::SOURCE_MAP_INLINE);
         }
 
         $compiled = $scssphp->compile($scss);

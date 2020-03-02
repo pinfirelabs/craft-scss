@@ -67,6 +67,12 @@ class Settings extends Model
      */
     public $cacheTime = 24 * 60 * 60;
 
+    /**
+     * Generate source map?
+     * @var bool
+     */
+    public $generateSourceMap = false;
+
     // Public Methods
     // =========================================================================
 
@@ -91,6 +97,8 @@ class Settings extends Model
             ['debug', 'default', 'value' => false],
             ['twig', 'string'],
             ['twig', 'default', 'value' => 'Test'],
+            ['generateSourceMap', 'boolean'],
+            ['generateSourceMap', 'default', 'value' => false],
         ];
     }
 }
