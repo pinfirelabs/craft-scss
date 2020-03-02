@@ -63,9 +63,9 @@ class Scss extends Plugin
      *
      * @var string
      */
-	public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.0.0';
 
-	public $hasCpSettings = true;
+    public $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
@@ -99,14 +99,14 @@ class Scss extends Plugin
                 }
             }
         );
-		
-		Event::on(
-			UrlManager::class,
-			UrlManager::EVENT_REGISTER_SITE_URL_RULES,
-			function (RegisterUrlRulesEvent $event) {
-				$event->rules['scss'] = 'scss/styles/index';
-			}
-		);
+
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['scss'] = 'scss/styles/index';
+            }
+        );
 
 /**
  * Logging in Craft involves using one of the following methods:
@@ -144,13 +144,13 @@ class Scss extends Plugin
     protected function createSettingsModel()
     {
         return new Settings();
-	}
+    }
 
-	protected function settingsHtml()
-	{
-		return \Craft::$app->getView()->renderTemplate('scss/settings', [
-			'settings' => $this->getSettings()
-		]);
-	}
+    protected function settingsHtml()
+    {
+        return \Craft::$app->getView()->renderTemplate('scss/settings', [
+            'settings' => $this->getSettings()
+        ]);
+    }
 
 }

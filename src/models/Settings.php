@@ -53,19 +53,19 @@ class Settings extends Model
      * @var boolean
      */
 
-	public $debug = false;
+    public $debug = false;
 
-	/**
-	 * Template text to render
-	 * @var string
-	 */
-	public $twig = '';
+    /**
+     * Template text to render
+     * @var string
+     */
+    public $twig = '';
 
-	/**
-	 * Number of seconds to cache scss results
-	 * @var int
-	 */
-	public $cacheTime = 24 * 60 * 60;
+    /**
+     * Number of seconds to cache scss results
+     * @var int
+     */
+    public $cacheTime = 24 * 60 * 60;
 
     // Public Methods
     // =========================================================================
@@ -88,9 +88,9 @@ class Settings extends Model
             ['devModeOutputFormat', 'string'],
             ['devModeOutputFormat', 'default', 'value' => 'Expanded'],
             ['debug', 'boolean'],
-			['debug', 'default', 'value' => false],
-			['twig', 'string'],
-			['twig', 'default', 'value' => 'Test'],
+            ['debug', 'default', 'value' => false],
+            ['twig', 'string'],
+            ['twig', 'default', 'value' => 'Test'],
         ];
     }
 }

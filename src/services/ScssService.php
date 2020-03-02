@@ -38,13 +38,13 @@ class ScssService extends Component
     // =========================================================================
 
     public function scss($scss = "", $attributes = "")
-	{
-		$result = $this->compileScss($scss, $attributes);
-		Craft::$app->view->registerCss($result);
-	}
+    {
+        $result = $this->compileScss($scss, $attributes);
+        Craft::$app->view->registerCss($result);
+    }
 
-	public function compileScss($scss = '', $attributes = '')
-	{
+    public function compileScss($scss = '', $attributes = '')
+    {
         $attributes = unserialize($attributes);
         $scssphp = new Compiler();
 
