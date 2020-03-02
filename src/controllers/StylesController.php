@@ -11,6 +11,7 @@ namespace chasegiunta\scss\controllers;
 use Craft;
 use craft\web\Controller;
 use chasegiunta\scss\Scss;
+use yii\web\Response;
 
 /**
  * Provides a way to build styles dynamically, but still serve them statically.
@@ -44,13 +45,16 @@ class StylesController extends Controller
 
 		$cacheKey = md5($scss);
 		$css = Craft::$app->cache->get($cacheKey);
-		if ($css === false) {
+		if ($css === false || $settings->debug) {
 			$css = $plugin->scssService->compileScss($scss);
 
 			Craft::$app->cache->set($cacheKey, $css, $settings['cacheTime']);
 		}
 
-		header('Content-type: text/css');
-		echo $css;
+		$response = Craft::$app->response;
+
+		$response->format = Response::FORMAT_RAW;
+		$response->content = $css;
+		$response->headers->set('Content-type', 'text/css');
 	}
 }
