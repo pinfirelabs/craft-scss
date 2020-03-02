@@ -43,13 +43,7 @@ class StylesController extends Controller
 
 		$scss = Craft::$app->view->renderString($twigTemplate);
 
-		$cacheKey = md5($scss);
-		$css = Craft::$app->cache->get($cacheKey);
-		if ($css === false || $settings->debug) {
-			$css = $plugin->scssService->compileScss($scss);
-
-			Craft::$app->cache->set($cacheKey, $css, $settings['cacheTime']);
-		}
+        $css = $plugin->scssService->compileScss($scss);
 
 		$response = Craft::$app->response;
 

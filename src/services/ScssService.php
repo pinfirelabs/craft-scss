@@ -15,7 +15,7 @@ use chasegiunta\scss\Scss;
 use Craft;
 use craft\base\Component;
 
-use Leafo\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Compiler;
 
 use yii\web\View;
 
@@ -46,7 +46,6 @@ class ScssService extends Component
     public function compileScss($scss = '', $attributes = '')
     {
         $attributes = unserialize($attributes);
-        $scssphp = new Compiler();
 
         $settings = Scss::$plugin->getSettings();
         if (Craft::$app->getConfig()->general->devMode) {
@@ -54,6 +53,12 @@ class ScssService extends Component
         } else {
             $outputFormat = $settings->outputFormat;
         }
+
+        $cacheOptions = [
+            'cacheDir' => Craft::getAlias('@runtime') . '/scss-cache',
+        ];
+
+        $scssphp = new Compiler($cacheOptions);
 
         if ($attributes['expanded']) {
             $outputFormat = 'Expanded';
@@ -71,7 +76,7 @@ class ScssService extends Component
             $outputFormat = 'Nested';
         }
 
-        $scssphp->setFormatter("Leafo\ScssPhp\Formatter\\$outputFormat");
+        $scssphp->setFormatter("ScssPhp\ScssPhp\Formatter\\$outputFormat");
 
         $rootPath = Craft::getAlias('@root');
         $scssphp->setImportPaths($rootPath);

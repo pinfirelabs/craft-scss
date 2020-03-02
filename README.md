@@ -24,7 +24,7 @@ To install the plugin, follow these instructions.
 
 ## SCSS Overview
 
-Craft conveniently offers `{% css %}` tags to include template-specific styles in the `head` of your page. This plugin takes that functionality a bit further by enabling support for compiling SCSS to CSS with `{% scss %}` using the scssphp library (https://github.com/leafo/scssphp).
+Craft conveniently offers `{% css %}` tags to include template-specific styles in the `head` of your page. This plugin takes that functionality a bit further by enabling support for compiling SCSS to CSS with `{% scss %}` using the scssphp library (https://github.com/scssphp/scssphp).
 
 ## Configuring SCSS
 
